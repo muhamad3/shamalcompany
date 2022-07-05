@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shamalcompany/screens/item.dart';
 
 // ignore: camel_case_types
 class card extends StatelessWidget {
   final String name;
   final String price;
   final String imgname;
+  final String body;
   const card(
       {Key? key,
       required this.name,
       required this.price,
-      required this.imgname})
+      required this.imgname, required this.body})
       : super(key: key);
 
   @override
@@ -19,7 +21,9 @@ class card extends StatelessWidget {
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
-          debugPrint('Card tapped.');
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) =>
+                  Item(name: name, body: body, itemimg: imgname)));
         },
         child: Container(
           decoration: BoxDecoration(

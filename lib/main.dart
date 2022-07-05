@@ -1,6 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shamalcompany/home.dart';
+import 'package:shamalcompany/screens/item.dart';
 
 Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   initialRoute: '/',
                   routes: {
                     '/' :(context)=> const Home(),
+                    '/item' :(context)=> const Item(body: '', itemimg: '', name: '',),
                   });
             }
   }
