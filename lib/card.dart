@@ -7,11 +7,26 @@ class card extends StatelessWidget {
   final String price;
   final String imgname;
   final String body;
+  final String? length;
+  final String? height;
+  final String? depth;
+  final String? moisture;
+  final String? electricity;
+  final String? heat;
+  final String? radius;
+  final String? batterylife;
+  final String? gurante;
   const card(
       {Key? key,
       required this.name,
       required this.price,
-      required this.imgname, required this.body})
+      required this.imgname,
+      required this.body,
+      this.length,
+      this.height,
+      this.depth,
+      this.moisture,
+      this.electricity, this.heat, this.radius, this.batterylife, this.gurante})
       : super(key: key);
 
   @override
@@ -22,8 +37,12 @@ class card extends StatelessWidget {
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>
-                  Item(name: name, body: body, itemimg: imgname)));
+              builder: (context) => Item(
+                    name: name,
+                    body: body,
+                    itemimg: imgname,
+                    price: price,
+                  )));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -40,12 +59,14 @@ class card extends StatelessWidget {
               Text(
                 name,
                 style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 textAlign: TextAlign.right,
               ),
               Container(
                 alignment: Alignment.centerRight,
                 child: Container(
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.orange[900],
@@ -60,15 +81,19 @@ class card extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                  ),
-                  child: const Text(
-                    'بینینی هەموو تایبەتمەندیەکان',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-                  ))
+              Container(
+                margin: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                    child: const Text(
+                      'بینینی هەموو تایبەتمەندیەکان',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    )),
+              )
             ],
           ),
         ),

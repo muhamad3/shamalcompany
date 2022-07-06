@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   initialRoute: '/',
                   routes: {
                     '/' :(context)=> const Home(),
-                    '/item' :(context)=> const Item(body: '', itemimg: '', name: '',),
+                    '/item' :(context)=> const Item(body: '', itemimg: '', name: '',price : ''),
                   });
             }
   }
