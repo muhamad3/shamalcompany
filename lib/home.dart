@@ -45,6 +45,7 @@ class _HomeState extends State<Home> {
       body: <Widget>[
         Container(
           alignment: Alignment.center,
+          color: Colors.grey,
           child: const Browser(),
         ),
         Container(

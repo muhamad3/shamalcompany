@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamalcompany/home.dart';
 import 'package:shamalcompany/screens/item.dart';
+import 'package:shamalcompany/screens/order.dart';
 
 Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   routes: {
                     '/' :(context)=> const Home(),
                     '/item' :(context)=> const Item(body: '', itemimg: '', name: '',price : ''),
+                    '/order' :(context)=> const Order(name: ''),
                   });
             }
   }

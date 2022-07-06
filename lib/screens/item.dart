@@ -61,17 +61,18 @@ class Item extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.orange[900],
-                ),
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  price,
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w900),
-                  textAlign: TextAlign.right,
-                ),
+                alignment: Alignment.bottomCenter,
+                padding: EdgeInsets.all(20),
+                child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                    child: const Text(
+                      'داواکردن',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    )),
               )
             ],
           ),
