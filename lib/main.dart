@@ -1,12 +1,12 @@
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:shamalcompany/home.dart';
+import 'package:shamalcompany/screens/home.dart';
 import 'package:shamalcompany/screens/item.dart';
 import 'package:shamalcompany/screens/order.dart';
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
   runApp( const MyHomePage());
 }
@@ -30,8 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   initialRoute: '/',
                   routes: {
                     '/' :(context)=> const Home(),
-                    '/item' :(context)=> const Item(body: '', itemimg: '', name: '',price : ''),
-                    '/order' :(context)=> const Order(name: ''),
+                    '/item' :(context)=>  const Item(body: '', itemimg: '', name: '',price : '', pricenum: 0),
+                    '/order' :(context)=> const Order(name: '', pricenum: 0),
                   });
             }
   }

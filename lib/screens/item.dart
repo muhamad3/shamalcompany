@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:shamalcompany/screens/order.dart';
 
 class Item extends StatelessWidget {
   final String name;
   final String body;
   final String itemimg;
   final String price;
+  final num pricenum;
   final String? length;
   final String? height;
   final String? depth;
@@ -30,13 +32,16 @@ class Item extends StatelessWidget {
       this.heat,
       this.radius,
       this.batterylife,
-      this.gurante})
+      this.gurante,
+      required this.pricenum})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.orange[900],
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -64,7 +69,11 @@ class Item extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 padding: EdgeInsets.all(20),
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              Order(name: name, pricenum: pricenum)));
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.black),
                     ),

@@ -7,6 +7,7 @@ class card extends StatelessWidget {
   final String price;
   final String imgname;
   final String body;
+  final num pricenum;
   final String? length;
   final String? height;
   final String? depth;
@@ -30,7 +31,8 @@ class card extends StatelessWidget {
       this.heat,
       this.radius,
       this.batterylife,
-      this.gurante})
+      this.gurante,
+      required this.pricenum})
       : super(key: key);
 
   @override
@@ -42,18 +44,17 @@ class card extends StatelessWidget {
       child: Card(
         margin: const EdgeInsets.fromLTRB(20, 30, 20, 30),
         child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
+          splashColor: Colors.black,
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => Item(
-                      name: name,
-                      body: body,
-                      itemimg: imgname,
-                      price: price,
-                    )));
+                    name: name,
+                    body: body,
+                    itemimg: imgname,
+                    price: price,
+                    pricenum: pricenum)));
           },
           child: Container(
-
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [

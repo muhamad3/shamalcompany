@@ -34,7 +34,7 @@ class Browser extends StatelessWidget {
             height: '8.5 سانتیمەتر',
             depth: '4 سانتیمەتر',
             moisture: '20% ~ 80%',
-            electricity: 'دەوروبەری 60mA(12vDC)',
+            electricity: 'دەوروبەری 60mA(12vDC)', pricenum: 100000,
           ),
           card(
             name: 'جی پی ئێسی چاودێری کردن و کوژاندنەوە و گوێگرتنی ئۆتۆمبێل',
@@ -58,7 +58,7 @@ class Browser extends StatelessWidget {
             height: '9.5 سانتیمەتر',
             depth: '1.5 سانتیمەتر',
             moisture: '20% ~ 80%',
-            electricity: 'دەوروبەری 60mA(12vDC)',
+            electricity: 'دەوروبەری 60mA(12vDC)', pricenum: 100,
           ),
           card(
             name: 'جی پی ئێسی چاودێری کردنی ئۆتۆمبێل',
@@ -88,7 +88,7 @@ class Browser extends StatelessWidget {
             depth: '10 سانتیمەتر',
             moisture: '20% ~ 80%',
             electricity: 'دەوروبەری 60mA(12vDC)',
-            heat: '(-20) ~ (60) C',
+            heat: '(-20) ~ (60) C', pricenum: 30000,
           ),
           card(
             name: 'سیستەمی چاودێری کردنی ماڵ',
@@ -104,7 +104,7 @@ class Browser extends StatelessWidget {
             height: '8.5 سانتیمەتر',
             depth: '4 سانتیمەتر',
             moisture: '20% ~ 80%',
-            electricity: 'دەوروبەری 60mA(12vDC)',
+            electricity: 'دەوروبەری 60mA(12vDC)', pricenum: 500,
           ),
           card(
             name: 'جی پی ئێسی چاودێری کردنی قاسە',
@@ -123,7 +123,7 @@ class Browser extends StatelessWidget {
             height: '8.5 سانتیمەتر',
             depth: '4 سانتیمەتر',
             moisture: '20% ~ 80%',
-            electricity: 'دەوروبەری 60mA(12vDC)',
+            electricity: 'دەوروبەری 60mA(12vDC)', pricenum: 300,
           ),
           card(
             name: 'جی پی ئێسی چاودێری کردنی منداڵ',
@@ -142,7 +142,7 @@ class Browser extends StatelessWidget {
             height: '8.5 سانتیمەتر',
             depth: '4 سانتیمەتر',
             moisture: '20% ~ 80%',
-            electricity: 'دەوروبەری 60mA(12vDC)',
+            electricity: 'دەوروبەری 60mA(12vDC)', pricenum: 100000,
           ),
           card(
             name: 'کامێرای جاودێری زیرەک',
@@ -167,7 +167,7 @@ class Browser extends StatelessWidget {
             moisture: '20% ~ 80%',
             electricity: 'دەوروبەری 60mA(12vDC)',
             batterylife: '٧ ڕۆژ',
-            gurante: '٥ ساڵ',
+            gurante: '٥ ساڵ', pricenum: 38000,
           ),
           card(
             name: 'سیمکارتی تایبەتی جی پی ئێس',
@@ -191,7 +191,7 @@ class Browser extends StatelessWidget {
             height: '5.5 سانتیمەتر',
             radius: '5.5 سانتیمەتر',
             moisture: '20% ~ 80%',
-            electricity: 'دەوروبەری 60mA(12vDC)',
+            electricity: 'دەوروبەری 60mA(12vDC)', pricenum: 15000,
           ),
           card(
             name: 'لینک لۆکەیشن جی پی ئێس',
@@ -203,7 +203,7 @@ class Browser extends StatelessWidget {
             height: '8.5 سانتیمەتر',
             depth: '4 سانتیمەتر',
             moisture: '20% ~ 80%',
-            electricity: 'دەوروبەری 60mA(12vDC)',
+            electricity: 'دەوروبەری 60mA(12vDC)', pricenum: 30000,
           ),
         ],
       )),
