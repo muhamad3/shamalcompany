@@ -45,15 +45,7 @@ class card extends StatelessWidget {
         margin: const EdgeInsets.fromLTRB(20, 30, 20, 30),
         child: InkWell(
           splashColor: Colors.black,
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => Item(
-                    name: name,
-                    body: body,
-                    itemimg: imgname,
-                    price: price,
-                    pricenum: pricenum)));
-          },
+          onTap: () {},
           child: Container(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -90,7 +82,15 @@ class card extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.all(10),
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Item(
+                                name: name,
+                                body: body,
+                                itemimg: imgname,
+                                price: price,
+                                pricenum: pricenum)));
+                      },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.black),

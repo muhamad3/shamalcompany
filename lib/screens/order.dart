@@ -175,7 +175,7 @@ class _OrderState extends State<Order> {
                 controller: note,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: '(ئارەزومەندانە)تێبینی'),
+                    hintText: '(ئارەزومەندانەیە)تێبینی'),
                 maxLines: 5,
               ),
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -298,8 +298,6 @@ class _OrderState extends State<Order> {
                                                             FontWeight.w700))));
                                         Navigator.pop(context);
                                         await savedata();
-                                        await uploadFile();
-                                        Navigator.pop(context);
                                       },
                                       style: ButtonStyle(
                                         backgroundColor:
@@ -334,7 +332,7 @@ class _OrderState extends State<Order> {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text(
-                          "تکایە ناو و ژمارەی تەلەفۆن بنووسە و رەسم دابنێ",
+                          "تکایە ناو و ژمارەی تەلەفۆن بنووسە و ڕەسم دابنێ",
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w700))));
@@ -365,20 +363,19 @@ class _OrderState extends State<Order> {
       'phonenumber': phonenumber,
       'quantity': quantitys,
       'notes': notes,
-      'url': urldownload
     });
   }
 
   Future uploadFile() async {
     if (file == null) return;
 
-    task = FirebaseApi.uploadFile('ids/$username', file!);
+    task = FirebaseApi.uploadFile('ids/$username.jpg', file!);
 
     if (task == null) return;
 
     await task!.whenComplete(() {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('داواکەت بە سەرکەوتوی توۆمار کرا',
+          content: Text('داواکەت بە سەرکەوتوی تۆمار کرا',
               textAlign: TextAlign.right,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700))));
     });

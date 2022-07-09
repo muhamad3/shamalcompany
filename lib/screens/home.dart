@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shamalcompany/screens/Browse.dart';
+import 'package:shamalcompany/screens/about.dart';
+import 'package:shamalcompany/screens/login.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,21 +30,21 @@ class _HomeState extends State<Home> {
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
-            label: 'Explore',
+            label: '',
           ),
           NavigationDestination(
             icon: Icon(Icons.search),
-            label: 'Commute',
+            label: '',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.info),
             icon: Icon(Icons.info_outline),
-            label: 'Saved',
+            label: '',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.person),
             icon: Icon(Icons.person_outline),
-            label: 'Saved',
+            label: '',
           ),
         ],
       ),
@@ -57,14 +60,14 @@ class _HomeState extends State<Home> {
           child: const Text('Page 2'),
         ),
         Container(
-          color: Colors.blue,
+          
           alignment: Alignment.center,
-          child: const Text('Page 3'),
+          child: const About(),
         ),
         Container(
           color: Colors.blue,
           alignment: Alignment.center,
-          child: const Text('Page 4'),
+          child: const Login(),
         ),
       ][currentPageIndex],
     );

@@ -40,6 +40,13 @@ dependencies:
   firebase_storage: ^10.3.1
   file_picker: ^4.6.1
   flutter_number_picker: ^1.0.4
+  http: ^0.13.4
+  url_launcher: ^6.1.4
+  font_awesome_flutter: ^10.1.0
+  firebase_auth: ^3.4.1
+  path_provider: ^2.0.11
+  dio: ^4.0.6
+  gallery_saver: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +82,8 @@ flutter:
     - img/linkgps.png
     - img/sim.png
     - img/id.png
+    - img/logo.png
+    - img/avatar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
