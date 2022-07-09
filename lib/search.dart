@@ -24,7 +24,6 @@ Post? domain;
 
     if (domain != null) {
       setState(() {
-        print('lllllllllllllllllllllllllllllllllllllllllll');
         isloaded = true;
       });
     }
