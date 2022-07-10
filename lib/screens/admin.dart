@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, library_private_types_in_public_api
 
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -29,14 +29,15 @@ class _AdminState extends State<Admin> {
   final firebase_storage.FirebaseStorage storage =
       firebase_storage.FirebaseStorage.instance;
 
-  Future<String> downloadurl(String image) async {
-    String downloadurl = await storage.ref('ids/$image.jpg').getDownloadURL();
+  Future<String> downloadurl(String image, String date) async {
+    String downloadurl =
+        await storage.ref('ids/$date$image.jpg').getDownloadURL();
 
     return downloadurl;
   }
 
-  Future downloadFile(String refe) async {
-    Reference ref = storage.ref('ids/$refe.jpg');
+  Future downloadFile(String refe, String date) async {
+    Reference ref = storage.ref('ids/$date$refe.jpg');
     final url = await ref.getDownloadURL();
 
     final tempdir = await getTemporaryDirectory();
@@ -48,6 +49,7 @@ class _AdminState extends State<Admin> {
     } else if (url.contains('.mp4')) {
       await GallerySaver.saveVideo(path, toDcim: true);
     }
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text('File saved to ${ref.name}'),
     ));
@@ -70,7 +72,7 @@ class _AdminState extends State<Admin> {
       child: Column(
         children: [
           FutureBuilder(
-              future: downloadurl(request.username ?? ''),
+              future: downloadurl(request.username!, request.date!),
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done &&
                     snapshot.hasData) {
@@ -161,7 +163,7 @@ class _AdminState extends State<Admin> {
                         ),
                         ElevatedButton(
                             onPressed: () {
-                              downloadFile(request.username ?? '');
+                              downloadFile(request.username!, request.date!);
                             },
                             style: ButtonStyle(
                               backgroundColor:

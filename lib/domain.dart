@@ -1,45 +1,45 @@
 // To parse this JSON data, do
 //
-//     final Post = PostFromJson(jsonString);
+//     final domain = domainFromJson(jsonString);
 
 import 'dart:convert';
 
-Post postFromJson(String str) => Post.fromJson(json.decode(str));
+Domain domainFromJson(String str) => Domain.fromJson(json.decode(str));
 
-String postToJson(Post data) => json.encode(data.toJson());
+String domainToJson(Domain data) => json.encode(data.toJson());
 
-class Post {
-    Post({
-        this.id,
-        this.name,
-        this.username,
-        this.email,
-        this.phone,
-        this.website,
+class Domain {
+    Domain({
+        this.domainInfo,
     });
 
-    int? id;
-    String? name;
-    String? username;
-    String? email;
-    String? phone;
-    String? website;
+    DomainInfo? domainInfo;
 
-    factory Post.fromJson( dynamic json) => Post(
-        id: json["id"],
-        name: json["name"],
-        username: json["username"],
-        email: json["email"],
-        phone: json["phone"],
-        website: json["website"],
+    factory Domain.fromJson(Map<String, dynamic> json) => Domain(
+        domainInfo: DomainInfo.fromJson(json["DomainInfo"]),
     );
 
-        dynamic toJson() => {
-        "id": id,
-        "name": name,
-        "username": username,
-        "email": email,
-        "phone": phone,
-        "website": website,
+    Map<String, dynamic> toJson() => {
+        "DomainInfo": domainInfo?.toJson(),
+    };
+}
+
+class DomainInfo {
+    DomainInfo({
+        this.domainAvailability,
+        this.domainName,
+    });
+
+    String? domainAvailability;
+    String? domainName;
+
+    factory DomainInfo.fromJson(Map<String, dynamic> json) => DomainInfo(
+        domainAvailability: json["domainAvailability"],
+        domainName: json["domainName"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "domainAvailability": domainAvailability,
+        "domainName": domainName,
     };
 }

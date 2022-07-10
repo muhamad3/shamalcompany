@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shamalcompany/screens/Browse.dart';
 import 'package:shamalcompany/screens/about.dart';
 import 'package:shamalcompany/screens/login.dart';
-
+import 'package:shamalcompany/search.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,6 +17,24 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'img/logo.png',
+              height: 50,
+              width: 50,
+            ),
+            const Text(
+              'کۆمپانیای شەماڵی کوردستان',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
+            ),
+          ],
+        ),
         backgroundColor: Colors.orange[900],
       ),
       bottomNavigationBar: NavigationBar(
@@ -55,12 +73,10 @@ class _HomeState extends State<Home> {
           child: const Browser(),
         ),
         Container(
-          color: Colors.green,
           alignment: Alignment.center,
-          child: const Text('Page 2'),
+          child: const Search(),
         ),
         Container(
-          
           alignment: Alignment.center,
           child: const About(),
         ),

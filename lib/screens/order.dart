@@ -39,12 +39,17 @@ class _OrderState extends State<Order> {
 
   String? urldownload;
 
+  String date=DateTime.now().toString();
   Future pickimage(source) async {
     try {
-      final image = await ImagePicker().pickImage(source: source);
-      if (image == null) return;
+          ImagePicker imagePicker = ImagePicker();
+     XFile? cimage = await imagePicker.pickImage(  
+  source: source,
+  imageQuality: 85,
+);
+      if (cimage == null) return;
 
-      final imageTemporary = File(image.path);
+      final imageTemporary = File(cimage.path);
       setState(() => file = imageTemporary);
       // ignore: empty_catches
     } on PlatformException {}
@@ -74,6 +79,7 @@ class _OrderState extends State<Order> {
               child: Column(children: [
             const Text(
               'وێنەیەکی کارتی نیشتیمانی یان تەسکەرەکەت دابنێ',
+              textAlign: TextAlign.right,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             ),
             file != null
@@ -119,6 +125,7 @@ class _OrderState extends State<Order> {
               ],
             ),
             Container(
+              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
               child: TextField(
                 controller: name,
                 decoration: const InputDecoration(
@@ -126,26 +133,23 @@ class _OrderState extends State<Order> {
                   hintText: 'ناوی سیانی',
                 ),
               ),
-              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
             ),
             Container(
+              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
               child: TextField(
                 controller: phonenum,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), hintText: 'ژمارەی تەلەفۆن'),
               ),
-              padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   widget.pricenum < 750
-                      ? (widget.pricenum * int.parse(quantitys)).toString() +
-                          "\$"
-                      : (widget.pricenum * int.parse(quantitys)).toString() +
-                          "IQD",
+                      ? "${widget.pricenum * int.parse(quantitys)}\$"
+                      : "${widget.pricenum * int.parse(quantitys)}IQD",
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.w700),
                 ),
@@ -171,6 +175,7 @@ class _OrderState extends State<Order> {
               ],
             ),
             Container(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: TextField(
                 controller: note,
                 decoration: const InputDecoration(
@@ -178,7 +183,6 @@ class _OrderState extends State<Order> {
                     hintText: '(ئارەزومەندانەیە)تێبینی'),
                 maxLines: 5,
               ),
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -247,14 +251,10 @@ class _OrderState extends State<Order> {
                                 children: [
                                   Text(
                                       widget.pricenum < 750
-                                          ? (widget.pricenum *
-                                                      int.parse(quantitys))
-                                                  .toString() +
-                                              "\$"
-                                          : (widget.pricenum *
-                                                      int.parse(quantitys))
-                                                  .toString() +
-                                              "IQD",
+                                          ? "${widget.pricenum *
+                                                      int.parse(quantitys)}\$"
+                                          : "${widget.pricenum *
+                                                      int.parse(quantitys)}IQD",
                                       textAlign: TextAlign.right,
                                       style: const TextStyle(
                                           fontSize: 20,
@@ -338,12 +338,12 @@ class _OrderState extends State<Order> {
                               fontSize: 20, fontWeight: FontWeight.w700))));
                 }
               },
-              child: const Text('تۆمارکردن',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
                 fixedSize: MaterialStateProperty.all(const Size.fromWidth(180)),
               ),
+              child: const Text('تۆمارکردن',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
             ),
           ])),
         ));
@@ -356,20 +356,20 @@ class _OrderState extends State<Order> {
     await uploadFile();
     FirebaseFirestore.instance
         .collection('requests')
-        .doc(phonenumber + DateTime.now().toString())
+        .doc(phonenumber + date)
         .set({
       'productname': widget.name,
       'username': username,
       'phonenumber': phonenumber,
       'quantity': quantitys,
       'notes': notes,
+      'date':date,
     });
   }
 
   Future uploadFile() async {
     if (file == null) return;
-
-    task = FirebaseApi.uploadFile('ids/$username.jpg', file!);
+    task = FirebaseApi.uploadFile('ids/$date$username.jpg', file!);
 
     if (task == null) return;
 

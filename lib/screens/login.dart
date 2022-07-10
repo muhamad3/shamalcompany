@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, library_private_types_in_public_api
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +36,7 @@ class _Login extends State<Login> {
           height: 20,
         ),
         Container(
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextFormField(
             controller: email,
             textInputAction: TextInputAction.done,
@@ -43,16 +44,15 @@ class _Login extends State<Login> {
             decoration: const InputDecoration(
                 border: OutlineInputBorder(), hintText: 'example@gmail.com'),
           ),
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         ),
         Container(
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
             controller: password,
             decoration: const InputDecoration(
                 border: OutlineInputBorder(), hintText: '******'),
             obscureText: true,
           ),
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         ),
         ElevatedButton(
           onPressed: () async {
@@ -62,11 +62,11 @@ class _Login extends State<Login> {
             Password = password.value.text;
             loginWithEmailAndPassword(Email, Password);
           },
-          child: const Text('Login'),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(
                 Colors.orange[900] ?? Colors.black),
           ),
+          child: const Text('Login'),
         ),
       ],
     ));
@@ -76,7 +76,7 @@ class _Login extends State<Login> {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
         .then((value) {
-      Navigator.popAndPushNamed(context, '/admin');
+      Navigator.pushNamed(context, '/admin');
     });
   }
 }

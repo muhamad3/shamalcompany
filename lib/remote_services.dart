@@ -1,17 +1,16 @@
-import 'package:shamalcompany/domain.dart';
 import 'package:http/http.dart' as http;
+import 'package:shamalcompany/domain.dart';
 
 class RemoteServices {
-  static Future<Post?> getdomain() async {
+   Future <Domain> getpost(String domain) async {
     var client = http.Client();
 
     var uri = Uri.parse(
-        'https://jsonplaceholder.typicode.com/users');
+        'https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_MRdgpWH8aj4GgPbI3V62n08psGiT6&domainName=$domain&credits=DA');
     var respose = await client.get(uri);
-    if (respose.statusCode == 200) {
+  
       var json = respose.body;
-      return postFromJson(json);
-    }
-    return null;
+      return domainFromJson(json);
+ 
   }
 }

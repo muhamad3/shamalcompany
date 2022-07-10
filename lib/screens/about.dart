@@ -6,6 +6,7 @@ class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _AboutState createState() => _AboutState();
 }
 
@@ -70,10 +71,10 @@ class _AboutState extends State<About> {
               children: [
                 Container(
                   width: double.infinity,
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Image.asset(
                     'img/avatar.png',
                   ),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                 ),
                 const Text('زانا هیجرانی',
                     textAlign: TextAlign.right,
@@ -104,10 +105,10 @@ class _AboutState extends State<About> {
             child: Column(
               children: [
                 Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Image.asset(
                     'img/avatar.png',
                   ),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                 ),
                 const Text('موحەممەد جەزا',
                     textAlign: TextAlign.right,
@@ -138,10 +139,10 @@ class _AboutState extends State<About> {
             child: Column(
               children: [
                 Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Image.asset(
                     'img/avatar.png',
                   ),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                 ),
                 const Text('توانا ئیبراهیم',
                     textAlign: TextAlign.right,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'remote_services.dart';
+import 'package:shamalcompany/remote_services.dart';
 import 'domain.dart';
 
 class Search extends StatefulWidget {
@@ -10,17 +10,12 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-Post? domain;
+  Domain? domain;
   var isloaded = false;
-
-  @override
-  void initState() {
-    super.initState();
-    getdata();
-  }
+  String? domainname;
 
   getdata() async {
-    domain = await RemoteServices.getdomain();
+    domain = await RemoteServices().getpost(domainname!);
 
     if (domain != null) {
       setState(() {
@@ -31,10 +26,40 @@ Post? domain;
 
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: isloaded,
-      child: Text('${domain?.id.toString()}'),
-      replacement: const Center(child: CircularProgressIndicator()),
+    return Column(
+      children: [
+        Card(
+          child: TextField(
+            decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'ناوی دۆمەینێک بنووسە'),
+            onChanged: (val) {
+              setState(() {
+                domainname = val;
+              });
+            },
+          ),
+        ),
+        ElevatedButton(
+            onPressed: () {
+              if (domainname != null) {
+                getdata();
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("تکایە ناوی دۆمێەینێک بنووسە",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w700))));
+              }
+            },
+            child: const Text('search')),
+        Visibility(
+          visible: isloaded,
+          replacement: const Center(child: CircularProgressIndicator()),
+          child: Text(
+              '${domain?.domainInfo?.domainName}   ${domain?.domainInfo?.domainAvailability}  '),
+        ),
+      ],
     );
   }
 }
