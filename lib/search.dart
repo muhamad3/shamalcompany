@@ -55,7 +55,6 @@ class _SearchState extends State<Search> {
             child: const Text('search')),
         Visibility(
           visible: isloaded,
-          replacement: const Center(child: CircularProgressIndicator()),
           child: Text(
               '${domain?.domainInfo?.domainName}   ${domain?.domainInfo?.domainAvailability}  '),
         ),
