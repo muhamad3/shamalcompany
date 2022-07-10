@@ -55,8 +55,32 @@ class _SearchState extends State<Search> {
             child: const Text('search')),
         Visibility(
           visible: isloaded,
-          child: Text(
-              '${domain?.domainInfo?.domainName}   ${domain?.domainInfo?.domainAvailability}  '),
+          child: DataTable(
+            columns: const [
+              DataColumn(
+                  label: Text('ناوی دۆمەینەکە',
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w900))),
+              DataColumn(
+                  label: Text('بەردەستیەکەی',
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w900))),
+            ],
+            rows: [
+              DataRow(cells: [
+                DataCell(Text(domain?.domainInfo?.domainName ?? '',
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w700))),
+                DataCell(Text(
+                  domain?.domainInfo?.domainAvailability == 'AVAILABLE'
+                      ? 'بەردەستە'
+                      : 'بەردەستە نییە',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w700),
+                ))
+              ]),
+            ],
+          ),
         ),
       ],
     );

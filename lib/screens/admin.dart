@@ -158,7 +158,7 @@ class _AdminState extends State<Admin> {
                           height: 200,
                           child: Image.network(
                             snapshot.data ?? '',
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitHeight,
                           ),
                         ),
                         ElevatedButton(
