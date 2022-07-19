@@ -3,6 +3,9 @@ import 'package:shamalcompany/domain.dart';
 
 class RemoteServices {
    Future <Domain> getpost(String domain) async {
+    if(!domain.contains('.')){
+      domain = '$domain.com';
+    }
     var client = http.Client();
 
     var uri = Uri.parse(
